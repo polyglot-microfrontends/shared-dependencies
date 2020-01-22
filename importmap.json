@@ -4,6 +4,7 @@
     "react": "https://cdn.jsdelivr.net/npm/react@16.12.0/umd/react.production.min.js",
     "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.12.0/umd/react-dom.production.min.js",
     "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
-    "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.5/dist/vue-router.min.js"
+    "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.5/dist/vue-router.min.js",
+    "single-spa-angularjs": "https://cdn.jsdelivr.net/npm/single-spa-angularjs/lib/single-spa-angularjs.js"
   }
 }
