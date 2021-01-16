@@ -1,10 +1,10 @@
 {
   "imports": {
-    "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.3.4/lib/system/single-spa.min.js",
-    "react": "https://cdn.jsdelivr.net/npm/react@16.12.0/umd/react.production.min.js",
-    "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.12.0/umd/react-dom.production.min.js",
-    "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
-    "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.1.5/dist/vue-router.min.js",
-    "single-spa-angularjs": "https://cdn.jsdelivr.net/npm/single-spa-angularjs@3.2.0/lib/single-spa-angularjs.js"
+    "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+    "react": "https://cdn.jsdelivr.net/npm/react@17.0.1/umd/react.production.min.js",
+    "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@17.0.1/umd/react-dom.production.min.js",
+    "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js",
+    "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.4.9/dist/vue-router.min.js",
+    "single-spa-angularjs": "https://cdn.jsdelivr.net/npm/single-spa-angularjs@4.1.0/lib/single-spa-angularjs.js"
   }
 }
