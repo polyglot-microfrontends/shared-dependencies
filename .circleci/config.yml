@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  setup:
+  build:
     docker:
       - image: ianwalter/pnpm:latest
     steps:
@@ -34,7 +34,7 @@ jobs:
             gcloud auth activate-service-account --key-file google-application-credentials.json
 
             echo "Uploading self hosted dependencies"
-            gsutil cp -rZ npm gs://$BUCKET_NAME/npm
+            gsutil cp -rZ /root/project/npm gs://$BUCKET_NAME/npm
 
             echo "Import Map"
             cat importmap.json
@@ -46,10 +46,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - setup
       - build:
-          requires:
-            - setup
       - deploy:
           context: deploy-context
           requires:
