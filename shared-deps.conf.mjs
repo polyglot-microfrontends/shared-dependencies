@@ -36,8 +36,8 @@ const config = {
   ],
   logLevel: "debug",
   clean: true,
-  // skipPackagesAtUrl:
-  //   "https://storage.googleapis.com/polyglot.microfrontends.app/npm/",
+  skipPackagesAtUrl:
+    "https://storage.googleapis.com/polyglot.microfrontends.app/npm/",
 };
 
 export default config;
