@@ -33,8 +33,12 @@ jobs:
             echo "Authenticating with Google"
             gcloud auth activate-service-account --key-file google-application-credentials.json
 
-            echo "Uploading self hosted dependencies"
-            gsutil cp -rZ /root/project/npm gs://$BUCKET_NAME
+            if [ -z "$(ls -A /root/project/npm)" ]; then
+              echo "No dependencies to upload"
+            else
+              echo "Uploading self hosted dependencies"
+              gsutil cp -rZ /root/project/npm gs://$BUCKET_NAME
+            fi
 
             echo "Import Map"
             cat importmap.json
