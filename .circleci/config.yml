@@ -34,7 +34,7 @@ jobs:
             gcloud auth activate-service-account --key-file google-application-credentials.json
 
             echo "Uploading self hosted dependencies"
-            gsutil cp -rZ /root/project/npm gs://$BUCKET_NAME/npm
+            gsutil cp -rZ /root/project/npm gs://$BUCKET_NAME
 
             echo "Import Map"
             cat importmap.json
