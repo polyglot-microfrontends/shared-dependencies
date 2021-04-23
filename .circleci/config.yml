@@ -1,19 +1,63 @@
 version: 2
 jobs:
+  setup:
+    docker:
+      - image: znck/pnpm:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install
+          command: pnpm install --frozen-lockfile
+      - save_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - node_modules
+  build:
+    docker:
+      - image: znck/pnpm:latest
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Build
+          command: pnpm run build
+      - save_cache:
+          key: build-output-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - npm
+      - store_artifacts:
+          path: npm
+          destination: npm
   deploy:
     docker:
-      - image: clue/httpie
+      - image: google/cloud-sdk
     environment:
-
     steps:
+      - restore_cache:
+          key: build-output-{{ .Environment.CIRCLE_SHA1 }}
       - checkout
       - run:
           name: Deploy
           command: |
+            find .
+
+            echo "Creating google application credentials json file"
+            echo $GOOGLE_APPLICATION_CREDENTIALS_JSON > google-application-credentials.json
+
+            echo "Authenticating with Google"
+            gcloud auth activate-service-account --key-file google-application-credentials.json
+
+            echo "Uploading self hosted dependencies"
+            gsutil cp -rZ npm gs://$BUCKET_NAME/npm
+
+            echo "Import Map"
             cat importmap.json
 
             echo "Updating import map"
-            http PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV -a $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD --check-status < importmap.json
+            curl -X PATCH $DEPLOYER_HOST/import-map.json\?env=$DEPLOYER_ENV --data "@importmap.json" -H "Accept: application/json" -H "Content-Type: application/json" -u $DEPLOYER_USERNAME:$DEPLOYER_PASSWORD
 
 workflows:
   version: 2

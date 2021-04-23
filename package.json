@@ -1,0 +1,28 @@
+{
+  "name": "poly-mf-shared-dependencies",
+  "version": "1.0.0",
+  "description": "[![CircleCI](https://circleci.com/gh/polyglot-microfrontends/shared-dependencies.svg?style=svg)](https://circleci.com/gh/polyglot-microfrontends/shared-dependencies)",
+  "scripts": {
+    "build": "shared-deps build shared-deps.conf.mjs",
+    "postinstall": "husky install",
+    "prepublishOnly": "pinst --disable",
+    "postpublish": "pinst --enable"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polyglot-microfrontends/shared-dependencies.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/polyglot-microfrontends/shared-dependencies/issues"
+  },
+  "homepage": "https://github.com/polyglot-microfrontends/shared-dependencies#readme",
+  "devDependencies": {
+    "husky": "^6.0.0",
+    "pinst": "^2.1.6",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "self-hosted-shared-dependencies": "^1.0.2"
+  }
+}
