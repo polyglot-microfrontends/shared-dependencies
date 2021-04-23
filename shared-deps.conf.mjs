@@ -25,7 +25,7 @@ const config = {
     },
     {
       name: "vue-router",
-      versions: ["^3.5.1"],
+      versions: ["^3.4.9"],
       include: ["dist/vue-router.js", "dist/vue-router.min.js"],
     },
     {
