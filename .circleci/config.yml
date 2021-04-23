@@ -63,8 +63,14 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
+      - setup
+      - build:
+          requires:
+            - setup
       - deploy:
           context: deploy-context
+          requires:
+            - build
           filters:
             branches:
               only: master
